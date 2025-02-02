@@ -6,11 +6,20 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 // import backgroundImg from "../assets/images/bg.png";
 import {requestForegroundPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 import fetchWeather from './service';
+import { useFonts } from "expo-font";
+
 
 export default function Index() {
 
   const [coordinates, setCoordinates] = useState<object>();
   const [weather, setWeather] = useState<any>();
+
+  const [isFontLoaded] = useFonts({
+    "Alata-Regular": require("../assets/fonts/Alata-Regular.ttf")
+  });
+
+
+  console.log("-----", isFontLoaded);
   
   useEffect(() => {
     getUserCoordinates();
@@ -42,14 +51,11 @@ export default function Index() {
     }
   }
 
-  console.log(coordinates)
-  console.log('----', weather)
-
 
   return (<ImageBackground imageStyle={styles.img} source={require('../assets/images/bg.png')} style={styles.imgBackground} >
     <SafeAreaProvider>
     <SafeAreaView style={styles.container}>
-      <HomeScreen />
+      {isFontLoaded && <HomeScreen />}
     </SafeAreaView>
   </SafeAreaProvider>
   </ImageBackground>
