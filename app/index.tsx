@@ -29,7 +29,7 @@ export default function Index() {
     }
 
   }, [coordinates]);
-console.log('-------', weather)
+  
   async function fetchWeatherByCoords(coordinates: any) {
     const weatherResponse = await fetchWeather(coordinates);
     setWeather(weatherResponse.data)

@@ -5,13 +5,14 @@ import React from 'react';
 
 
   
-export function BasicWeatherInfo({temperature}: any) {
+export default function BasicWeatherInfo({temperature, interpretation}: any) {
+    // console.log("------------", interpretation?.label)
     return <> <View style={styles.clock}><Txt>Clock</Txt></View>
         <View style={styles.city}><Txt>City</Txt></View>
-        <View style={styles.interpretation}><Txt>Sunny</Txt></View>
+        <View style={styles.interpretation}><Txt>{interpretation?.label}</Txt></View>
         <View style={styles.temp}>
             <Txt style={styles.temperature}>{temperature}&deg;</Txt>
-        <Image style={styles.img} />
+        <Image style={styles.img} source={interpretation?.image} />
         </View>
     </> ;
 }

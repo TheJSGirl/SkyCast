@@ -1,12 +1,19 @@
-import { Text } from 'react-native';
+import { Text, useWindowDimensions } from 'react-native';
 import styles from './txt.style';
 
 interface TxtProps {
     children: string;
     restPrps?: any;
-    style?: object;
+    style?: {
+      fontSize?: number
+    };
   }
-  
+
+const IPHONE_RATIO = 0.001184834123222749;
 export function Txt({children ,style, ...restPrps}  : TxtProps ) {
-    return <Text style={[styles.txt, style]} {...restPrps}>{children}</Text>;
+  const fontSize = style?.fontSize || styles.txt.fontSize;
+  const {height} = useWindowDimensions();
+  console.log(1/height)
+
+    return <Text style={[styles.txt, style, {fontSize: Math.round(fontSize * IPHONE_RATIO * height )}]} {...restPrps}>{children}</Text>;
 }
