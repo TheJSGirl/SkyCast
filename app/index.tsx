@@ -17,9 +17,6 @@ export default function Index() {
   const [isFontLoaded] = useFonts({
     "Alata-Regular": require("../assets/fonts/Alata-Regular.ttf")
   });
-
-
-  console.log("-----", isFontLoaded);
   
   useEffect(() => {
     getUserCoordinates();
@@ -32,10 +29,10 @@ export default function Index() {
     }
 
   }, [coordinates]);
-
+console.log('-------', weather)
   async function fetchWeatherByCoords(coordinates: any) {
     const weatherResponse = await fetchWeather(coordinates);
-    setWeather(weatherResponse)
+    setWeather(weatherResponse.data)
   }
 
   async function getUserCoordinates() {
@@ -55,7 +52,7 @@ export default function Index() {
   return (<ImageBackground imageStyle={styles.img} source={require('../assets/images/bg.png')} style={styles.imgBackground} >
     <SafeAreaProvider>
     <SafeAreaView style={styles.container}>
-      {isFontLoaded && <HomeScreen />}
+      {isFontLoaded && weather && <HomeScreen weather={weather} />}
     </SafeAreaView>
   </SafeAreaProvider>
   </ImageBackground>
