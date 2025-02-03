@@ -1,13 +1,16 @@
-import { Text, View, Image, ViewS } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import styles from './basicWeatherInfo.style';
-import { Txt } from '../Txt';
+import {Txt} from '../Txt';
+import { Clock } from '../Clock/index';
+
 import React from 'react';
 
 
   
 export default function BasicWeatherInfo({temperature, interpretation}: any) {
-    // console.log("------------", interpretation?.label)
-    return <> <View style={styles.clock}><Txt>Clock</Txt></View>
+    return <> <View style={styles.clock}>
+            <Clock />
+        </View>
         <View style={styles.city}><Txt>City</Txt></View>
         <View style={styles.interpretation}><Txt>{interpretation?.label}</Txt></View>
         <View style={styles.temp}>

@@ -31,3 +31,8 @@ export function getWeatherInterpretation(code) {
   console.log("===", WEATHER_INTERPRETATIONS.find(interpretation => interpretation.codes.includes(code)).image)
   return WEATHER_INTERPRETATIONS.find(interpretation => interpretation.codes.includes(code))
 }
+
+export function nowToHHMM(){
+  const d = new Date();
+  return `${d.getHours()}: ${d.getMinutes().toString().padStart(2, "0")}`;
+}

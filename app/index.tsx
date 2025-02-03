@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import HomeScreen from "./pages/Home/Home";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-// import backgroundImg from '../assets/images/background.png';
-// import backgroundImg from "../assets/images/bg.png";
 import {requestForegroundPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 import fetchWeather from './service';
 import { useFonts } from "expo-font";
@@ -29,7 +27,7 @@ export default function Index() {
     }
 
   }, [coordinates]);
-  
+
   async function fetchWeatherByCoords(coordinates: any) {
     const weatherResponse = await fetchWeather(coordinates);
     setWeather(weatherResponse.data)
