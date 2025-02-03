@@ -7,11 +7,11 @@ import React from 'react';
 
 
   
-export default function BasicWeatherInfo({temperature, interpretation}: any) {
+export default function BasicWeatherInfo({temperature, interpretation, city}: any) {
     return <> <View style={styles.clock}>
             <Clock />
         </View>
-        <View style={styles.city}><Txt>City</Txt></View>
+        <View style={styles.city}><Txt>{city}</Txt></View>
         <View style={styles.interpretation}><Txt>{interpretation?.label}</Txt></View>
         <View style={styles.temp}>
             <Txt style={styles.temperature}>{temperature}&deg;</Txt>

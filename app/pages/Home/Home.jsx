@@ -6,11 +6,11 @@ import Txt from "@/app/components/Txt";
 import  BasicWeatherInfo from "@/app/components/BasicWeatherInfo";
 import {getWeatherInterpretation} from '../../../utils';
 
-export default  function Home({weather}) {
+export default  function Home({weather, city}) {
     const currentInterpretation = getWeatherInterpretation(weather.current_weather.weathercode)
     return <><View style={styles.basicInfo}>
         {/* <Txt>Basic Weather info</Txt> */}
-        <BasicWeatherInfo interpretation={currentInterpretation} temperature={Math.round(weather.current_weather.temperature)} />
+        <BasicWeatherInfo interpretation={currentInterpretation} temperature={Math.round(weather.current_weather.temperature)} city={city} />
     </View>
     <View style={styles.searchBar}>
         <Txt>SearchBar</Txt>

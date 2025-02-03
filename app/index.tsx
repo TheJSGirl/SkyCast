@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import HomeScreen from "./pages/Home/Home";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import {requestForegroundPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 import fetchWeather from './service';
 import { useFonts } from "expo-font";
+import ApiService from './service'
 
 
 export default function Index() {
 
   const [coordinates, setCoordinates] = useState<object>();
   const [weather, setWeather] = useState<any>();
+  const [city, setCity] = useState();
 
   const [isFontLoaded] = useFonts({
     "Alata-Regular": require("../assets/fonts/Alata-Regular.ttf")
@@ -23,14 +25,21 @@ export default function Index() {
   useEffect(() => {
 
     if(coordinates) {
-      fetchWeatherByCoords(coordinates)
+      fetchWeatherByCoords(coordinates);
+      fetchCityByCoords(coordinates);
     }
 
   }, [coordinates]);
 
   async function fetchWeatherByCoords(coordinates: any) {
-    const weatherResponse = await fetchWeather(coordinates);
-    setWeather(weatherResponse.data)
+    const weatherResponse = await ApiService.fetchWeatherByCoords(coordinates);
+    setWeather(weatherResponse)
+  }
+
+  async function fetchCityByCoords(coordinates: any) {
+    const cityResponse = await ApiService.fetchCityByCoords(coordinates);
+    console.log("response---", cityResponse)
+    setCity(cityResponse)
   }
 
   async function getUserCoordinates() {
@@ -50,7 +59,9 @@ export default function Index() {
   return (<ImageBackground imageStyle={[styles.img, styles.container]} source={require('../assets/images/bg.png')} style={styles.imgBackground} >
     <SafeAreaProvider>
     <SafeAreaView style={styles.container}>
-      {isFontLoaded && weather && <HomeScreen weather={weather} />}
+     <View style={{padding: 10, flex: 1}}>
+     {isFontLoaded && weather && <HomeScreen weather={weather} city={city} />}
+     </View>
     </SafeAreaView>
   </SafeAreaProvider>
   </ImageBackground>
