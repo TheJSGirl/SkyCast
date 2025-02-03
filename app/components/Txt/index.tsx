@@ -10,7 +10,7 @@ interface TxtProps {
   }
 
 const IPHONE_RATIO = 0.001184834123222749;
-export function Txt({children ,style, ...restPrps}  : TxtProps ) {
+export default function Txt({children ,style, ...restPrps}  : TxtProps ) {
   const fontSize = style?.fontSize || styles.txt.fontSize;
   const {height} = useWindowDimensions();
   console.log(1/height)

@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import { Text } from 'react-native';
 
 
-export function Clock() {
+export default function Clock() {
     const [time, setTime] = useState(nowToHHMM());
 
     useEffect(() => {

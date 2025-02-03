@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 
 import styles from './Home.style';
 import React from "react";
-import { Txt } from "@/app/components/Txt";
+import Txt from "@/app/components/Txt";
 import  BasicWeatherInfo from "@/app/components/BasicWeatherInfo";
 import {getWeatherInterpretation} from '../../../utils';
 

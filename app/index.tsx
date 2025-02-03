@@ -47,7 +47,7 @@ export default function Index() {
   }
 
 
-  return (<ImageBackground imageStyle={styles.img} source={require('../assets/images/bg.png')} style={styles.imgBackground} >
+  return (<ImageBackground imageStyle={[styles.img, styles.container]} source={require('../assets/images/bg.png')} style={styles.imgBackground} >
     <SafeAreaProvider>
     <SafeAreaView style={styles.container}>
       {isFontLoaded && weather && <HomeScreen weather={weather} />}
@@ -60,6 +60,9 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // borderWidth: 5,
+    borderColor: 'red',
+    margin: 10
   },
   imgBackground: {
     flex: 1,

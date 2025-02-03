@@ -1,7 +1,7 @@
 import { Text, View, Image } from 'react-native';
 import styles from './basicWeatherInfo.style';
-import {Txt} from '../Txt';
-import { Clock } from '../Clock/index';
+import Txt from '../Txt';
+import Clock from '../Clock/index';
 
 import React from 'react';
 
