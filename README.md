@@ -1,50 +1,117 @@
-# Welcome to your Expo app 👋
+# SkyCast App (React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile application built with **React Native** that provides the following weather-related features:
 
-## Get started
+- **7-day forecast report** with weather information.
+- **Search functionality** by **city name** to get weather data.
+- Display of **sunrise**, **sunset**, and **windspeed** for the selected city.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Table of Contents
 
-2. Start the app
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Libraries and Dependencies](#libraries-and-dependencies)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-   ```bash
-    npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## Installation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. Clone the repository:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    ```bash
+    git clone https://github.com/TheJSGirl/SkyCast.git
+    ```
 
-## Get a fresh project
+2. Navigate to the project directory:
 
-When you're ready, run:
+    ```bash
+    cd skycast
+    ```
 
-```bash
-npm run reset-project
-```
+3. Install dependencies using `npm` or `yarn`:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+    ```bash
+    npm install
+    ```
 
-## Learn more
+    or
 
-To learn more about developing your project with Expo, look at the following resources:
+    ```bash
+    yarn install
+    ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+4. Run the application:
 
-## Join the community
+    For iOS (requires Xcode):
 
-Join our community of developers creating universal apps.
+    ```bash
+    npx react-native run-ios
+    ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    For Android (requires Android Studio):
+
+    ```bash
+    npx react-native run-android
+    ```
+
+---
+
+## Usage
+
+Upon launching the app, you will see the following features:
+
+1. **7-Day Forecast Report**: 
+   - The app fetches and displays a weather report for the next 7 days.
+   - Information includes temperature, weather conditions (e.g., sunny, cloudy), and additional data like wind speed.
+
+2. **Search by City Name**:
+   - Use the search bar to search for weather information by city name.
+   - Upon selecting a city, the app fetches and displays weather details such as temperature, wind speed, and sunrise/sunset times.
+
+3. **Sunrise, Sunset & Windspeed**:
+   - Detailed data is shown for **sunrise** and **sunset** times based on the current city.
+   - **Wind speed** is also displayed, providing a complete weather snapshot.
+
+4. **Background & Styling**:
+   - The app uses custom fonts and a dynamic background image depending on the weather conditions.
+
+---
+
+## Features
+
+- **7-day weather forecast**: View weather data for the next 7 days, including temperature and weather conditions.
+- **City search**: Search and display weather for a specific city.
+- **Sunrise and Sunset**: Shows the time of sunrise and sunset for the searched city.
+- **Wind speed**: Displays the current wind speed in the selected city.
+- **Responsive design**: Works well on both iOS and Android platforms.
+- **Modern UI/UX**: Uses background images and weather icons that dynamically change based on the weather conditions.
+
+---
+
+## Libraries and Dependencies
+
+This project uses the following libraries:
+
+- **React Native**: The core library for building the mobile app.
+- **Expo Location**: To fetch the user's current location and weather data based on latitude and longitude.
+- **React Navigation**: To handle navigation between different screens in the app.
+- **Axios**: To make HTTP requests to a weather API to fetch data.
+- **Expo Fonts**: For custom fonts used in the app.
+- **Moment.js**: For handling date and time formatting (e.g., for sunrise/sunset).
+  
+### List of key dependencies:
+  
+```json
+"react": "18.x.x",
+"react-native": "0.x.x",
+"react-navigation": "^4.x.x",
+"react-native-safe-area-context": "^3.x.x",
+"axios": "^0.x.x",
+"expo-location": "^14.x.x",
+"moment": "^2.x.x",
+"expo-font": "^10.x.x"
