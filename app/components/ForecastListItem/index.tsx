@@ -11,7 +11,7 @@ interface propType  {
 
 }
 
-export default function Forecasts({image, day, date, temperature}:propType ) {
+export default function forecastListItem({image, day, date, temperature}:propType ) {
 
     return <View style={styles.container}>
         <Image  source={image}  style={styles.image}/>
