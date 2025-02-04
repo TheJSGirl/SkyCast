@@ -48,6 +48,11 @@ export default function Index() {
     setCity(cityResponse)
   }
 
+  async function fetchCoordsByCity(coordinates: any) {
+    const coordsResponse = await ApiService.fetchCoordsByCity(coordinates);
+    setCoordinates(coordsResponse)
+  }
+
   async function getUserCoordinates() {
    const {status} = await requestForegroundPermissionsAsync();
    if(status === 'granted') {
@@ -59,6 +64,10 @@ export default function Index() {
     } else {
       setCoordinates({lat: "48.85", lng: "2.35"});
     }
+  }
+
+  const onSearchSubmit = (evt) => {
+    console.log(evt.nativeEvent.text)
   }
 
 
@@ -81,7 +90,7 @@ export default function Index() {
       (<Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false, animation: 'fade'}}>
         <Stack.Screen name="Home">
           {/* <HomeScreen weather={weather} city={city} /> */}
-          {() => <HomeScreen weather={weather} city={city} />}
+          {() => <HomeScreen weather={weather} city={city} onSearchSubmit={fetchCoordsByCity} />}
         </Stack.Screen>
         <Stack.Screen name="Forecasts" component={ForecastsScreen} />
 
