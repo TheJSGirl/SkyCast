@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import HomeScreen from "./pages/Home/Home";
 import ForecastsScreen from "./pages/Forecasts/Forecasts";
 
-import { StyleSheet, ImageBackground, View } from "react-native";
+import { StyleSheet, ImageBackground, View, Alert } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import {requestForegroundPermissionsAsync, getCurrentPositionAsync} from 'expo-location';
 import { useFonts } from "expo-font";
@@ -49,8 +49,12 @@ export default function Index() {
   }
 
   async function fetchCoordsByCity(coordinates: any) {
+   try {
     const coordsResponse = await ApiService.fetchCoordsByCity(coordinates);
     setCoordinates(coordsResponse)
+   }catch(err) {
+    Alert.alert("Ooops..!", err);
+   }
   }
 
   async function getUserCoordinates() {
